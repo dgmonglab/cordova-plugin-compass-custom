@@ -18,11 +18,10 @@
   under the License.
 -->
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-      id="cordova-plugin-compass-custom"
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-compass-custom"
       version="0.0.1">
-    <name>Set Wallpaper</name>
-    <description>cordova-plugin-compass-customn</description>
+    <name>cordova-plugin-compass-custom</name>
+    <description>cordova-plugin-compass-custom</description>
     <license>Apache 2.0</license>
     <keywords>cordova-plugin-compass-custom</keywords>
     <repo>https://github.com/dgmonglab/cordova-plugin-compass-custom</repo>
@@ -46,5 +45,4 @@
         </config-file>
         <source-file src = "src/android/compass.java" target-dir = "src/com/dgmong/compass" />
     </platform>
-
 </plugin>

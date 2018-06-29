@@ -1,4 +1,4 @@
-package fc.fcstudio;
+package com.dgmong.compass;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CallbackContext;
@@ -133,10 +133,9 @@ public class compass extends CordovaPlugin implements SensorEventListener {
 	@Override
 	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException
 	{
-		PluginResult pr = new PluginResult(PluginResult.Status.OK, azimuth+"");
-
+//		PluginResult pr = new PluginResult(PluginResult.Status.OK, azimuth+"");
 //		callbackContext.sendPluginResult(pr);
-		callbackContext.success(azimuth+"");
+		callbackContext.success("asdasdasdasdasd");
 		return true;
 	}
 
