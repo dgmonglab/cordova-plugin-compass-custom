@@ -19,6 +19,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
+import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CordovaInterface;
+
 //public class compass extends CordovaPlugin{
 ////public class compass extends CordovaPlugin implements SensorEventListener {
 //
@@ -42,9 +45,9 @@ public class compass extends CordovaPlugin implements SensorEventListener {
         super.initialize(cordova, webView);
 
         mSensorManager = (SensorManager) cordova.getActivity().getSystemService(Context.SENSOR_SERVICE);
-        msensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        msensor = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
-        sensorManager.registerListener(this, msensor, SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, msensor, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
