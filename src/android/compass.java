@@ -67,11 +67,14 @@ public class compass extends CordovaPlugin implements SensorEventListener {
     	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) // 가속도센서값일때
     		acc_data = event.values.clone();  //마찬가지
     	if (mag_data != null && acc_data != null) { //널체크
-	       SensorManager.getRotationMatrix(rotation, null, acc_data, mag_data); //회전메트릭스 연산
-	       SensorManager.getOrientation(rotation, result_data); //연산값으로 방향값 산출
-	       currentDegree = (float)Math.toDegrees(result_data[0]); // 방향값을 각도로 변환
-	       if(currentDegree < 0)
-	    	   currentDegree += 360; //0보다 작을경우 360을더해줌
+    		float r[] = new float[9];
+            float i[] = new float[9];
+	       boolean success = SensorManager.getRotationMatrix(r, i, acc_data, mag_data); //회전메트릭스 연산
+	       if(success){
+	    	   	float orientation[] = new float[3];
+	            SensorManager.getOrientation(r, orientation);
+	            currentDegree = orientation[0] * 360 / (2* 3.15159f); // orientation contains: azimut, pitch and roll
+	       }
     	}
     }
 
