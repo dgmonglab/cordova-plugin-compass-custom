@@ -1,7 +1,7 @@
 function compass() {}
 
-compass.prototype.getPosition = function(successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, 'compass', 'echo');
+compass.prototype.getPosition = function(successCallback, errorCallback, action) {
+    cordova.exec(successCallback, errorCallback, 'compass', action);
 };
 
 
