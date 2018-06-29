@@ -78,6 +78,7 @@ public class compass extends CordovaPlugin implements SensorEventListener {
     		    /*Computes the device's orientation based on the rotation matrix*/
     		    SensorManager.getOrientation(R, orientation);
     		    currentDegree = orientation[0]; // orientation contains: azimut, pitch and roll
+    		    currentDegree = -currentDegree*360/(2*3.14159f);
     		   }
     		  }
 
