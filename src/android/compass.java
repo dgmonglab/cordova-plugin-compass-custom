@@ -39,6 +39,12 @@ public class compass extends CordovaPlugin implements SensorEventListener {
     // device sensor manager
     private SensorManager mSensorManager;
     private Sensor msensor;
+    private Sensor gsensor;
+
+    float[] mag_data = new float[3]; //센서데이터를 저장할 배열 생성
+    float[] acc_data new float[3]; //가속도데이터값이 들어갈 배열. 각도를 뽑으려면 가속도와 지자계의 값이 있어야함.
+
+
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
@@ -46,13 +52,25 @@ public class compass extends CordovaPlugin implements SensorEventListener {
 
         mSensorManager = (SensorManager) cordova.getActivity().getSystemService(Context.SENSOR_SERVICE);
         msensor = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+        gsensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
         mSensorManager.registerListener(this, msensor, SensorManager.SENSOR_DELAY_GAME);
+        mSensorManager.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-    	currentDegree = Math.round(event.values[0]);
+    	if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)   //센서가 읽어들인 값이 마그네틱필드일때
+    		mag_data = event.values.clone();    //데이터를 모두 mag_data 배열에 저장
+    	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) // 가속도센서값일때
+    		acc_data = event.values.clone();  //마찬가지
+    	if (mag_data != null && acc_data != null) { //널체크
+	       SensorManager.getRotationMatrix(rotation, null, acc_data, mag_data); //회전메트릭스 연산
+	       SensorManager.getOrientation(rotation, result_data); //연산값으로 방향값 산출
+	       currentDegree = (float)Math.toDegrees(result_data[0]); // 방향값을 각도로 변환
+	       if(currentDegree < 0)
+	    	   currentDegree += 360; //0보다 작을경우 360을더해줌
+    	}
     }
 
     @Override
