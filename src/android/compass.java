@@ -27,7 +27,7 @@ public class compass extends CordovaPlugin{
 	{
 //		PluginResult pr = new PluginResult(PluginResult.Status.OK, azimuth+"");
 //		callbackContext.sendPluginResult(pr);
-		callbackContext.success("asdasdasdasdasd");
+		callbackContext.success(action);
 		return true;
 	}
 //    private static final String TAG = "Compass";

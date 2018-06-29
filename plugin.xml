@@ -18,24 +18,18 @@
   under the License.
 -->
 
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-compass-custom"
-      version="0.0.1">
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-compass-custom" version="0.0.1">
     <name>cordova-plugin-compass-custom</name>
-    <description>cordova-plugin-compass-custom</description>
-    <license>Apache 2.0</license>
-    <keywords>cordova-plugin-compass-custom</keywords>
-    <repo>https://github.com/dgmonglab/cordova-plugin-compass-custom</repo>
-    <issue></issue>
 
     <js-module src="www/compass.js" name="compass">
-        <clobbers target="compass" />
+        <clobbers target="cordova.plugins.compass" />
     </js-module>
 
     <!-- android -->
     <platform name = "android">
         <config-file target = "res/xml/config.xml" parent = "/*">
             <feature name = "compass" >
-                <param name = "android-package" value = "com.dgmong.compass"/>
+                <param name = "android-package" value = "com.dgmong.compass.compass"/>
             </feature>
         </config-file>
         <config-file target = "AndroidManifest.xml" parent="/*">
