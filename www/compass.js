@@ -12,7 +12,7 @@ compass.prototype.getPosition = function(callback) {
       typeof callback === 'function' && callback(errorBack);
     };
     var action = "start"; //future actions new entries. Fixed.
-    cordova.exec(successCallback, errorCallback, services, action, dependentProperties);
+    cordova.exec(successCallback, errorCallback, services, action);
 };
 
 
