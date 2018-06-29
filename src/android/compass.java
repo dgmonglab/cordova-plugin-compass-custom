@@ -133,9 +133,10 @@ public class compass extends CordovaPlugin implements SensorEventListener {
 	@Override
 	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException
 	{
-		PluginResult pr = new PluginResult(PluginResult.Status.OK, azimuth);
+		PluginResult pr = new PluginResult(PluginResult.Status.OK, azimuth+"");
 
-		callbackContext.sendPluginResult(pr);
+//		callbackContext.sendPluginResult(pr);
+		callbackContext.success(pr)
 		return true;
 	}
 

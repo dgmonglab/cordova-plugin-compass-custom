@@ -1,9 +1,7 @@
 function compass() {}
 
-compass.prototype.getPosition = function(image, callback) {
+compass.prototype.getPosition = function(callback) {
     var services = "compass";
-    var dependentProperties = [];
-    dependentProperties.push(image, false);
 
     var successCallback = function() {
       typeof callback === 'function' && callback();
@@ -13,11 +11,8 @@ compass.prototype.getPosition = function(image, callback) {
       var errorBack = error || 'unknown cordova error when setting wallpaper';
       typeof callback === 'function' && callback(errorBack);
     };
-
     var action = "start"; //future actions new entries. Fixed.
-    if (image) {
-        cordova.exec(successCallback, errorCallback, services, action, dependentProperties);
-    }
+    cordova.exec(successCallback, errorCallback, services, action, dependentProperties);
 };
 
 
