@@ -35,9 +35,16 @@ public class compass extends CordovaPlugin implements SensorEventListener {
     private float currentDegree = 0f;
     // device sensor manager
     private SensorManager mSensorManager;
+    private Sensor msensor;
 
-    public compass(){
-    	mSensorManager = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+    @Override
+    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
+        super.initialize(cordova, webView);
+
+        mSensorManager = (SensorManager) cordova.getActivity().getSystemService(Context.SENSOR_SERVICE);
+        msensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+
+        sensorManager.registerListener(this, msensor, SensorManager.SENSOR_DELAY_GAME);
     }
 
     @Override
