@@ -63,43 +63,43 @@ public class compass extends CordovaPlugin implements SensorEventListener {
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-    	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
-    		   mGravity = event.values;
-    		  if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
-    		   mGeomagnetic = event.values;
-    		  if (mGravity != null && mGeomagnetic != null) {
-    		   float R[] = new float[9];
-    		   float I[] = new float[9];
-    		   /*Computes the inclination matrix I as well as the rotation matrix R transforming a vector from the device coordinate
-    		    *  system to the world's coordinate system which is defined as a direct orthonormal basis*/
-    		   boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
-    		   if (success) {
-    		    float orientation[] = new float[3];
-    		    /*Computes the device's orientation based on the rotation matrix*/
-    		    SensorManager.getOrientation(R, orientation);
-    		    currentDegree = orientation[0]; // orientation contains: azimut, pitch and roll
-    		    currentDegree = -currentDegree*360/(2*3.14159f);
-    		   }
-    		  }
+//    	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
+//    		   mGravity = event.values;
+//    		  if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)
+//    		   mGeomagnetic = event.values;
+//    		  if (mGravity != null && mGeomagnetic != null) {
+//    		   float R[] = new float[9];
+//    		   float I[] = new float[9];
+//    		   /*Computes the inclination matrix I as well as the rotation matrix R transforming a vector from the device coordinate
+//    		    *  system to the world's coordinate system which is defined as a direct orthonormal basis*/
+//    		   boolean success = SensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
+//    		   if (success) {
+//    		    float orientation[] = new float[3];
+//    		    /*Computes the device's orientation based on the rotation matrix*/
+//    		    SensorManager.getOrientation(R, orientation);
+//    		    currentDegree = orientation[0]; // orientation contains: azimut, pitch and roll
+//    		    currentDegree = -currentDegree*360/(2*3.14159f);
+//    		   }
+//    		  }
 
-//    	if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)   //센서가 읽어들인 값이 마그네틱필드일때
-//    		mag_data = event.values.clone();    //데이터를 모두 mag_data 배열에 저장
-//    	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) // 가속도센서값일때
-//    		acc_data = event.values.clone();  //마찬가지
-//    	if (mag_data != null && acc_data != null) { //널체크
-//    		float r[] = new float[9];
-//            float i[] = new float[9];
-//	       boolean success = SensorManager.getRotationMatrix(r, i, acc_data, mag_data); //회전메트릭스 연산
-//	       if(success){
-//	    	   	float orientation[] = new float[3];
-//	            SensorManager.getOrientation(r, orientation);
-////	            currentDegree = orientation[0] * 360 / (2* 3.15159f); // orientation contains: azimut, pitch and roll
-//
-//	            currentDegree = (float)Math.toDegrees(orientation[0]); // 방향값을 각도로 변환
-//
-//	            if(currentDegree < 0) currentDegree += 360; //0보다 작을경우 360을더해줌
-//	       }
-//    	}
+    	if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)   //센서가 읽어들인 값이 마그네틱필드일때
+    		mag_data = event.values.clone();    //데이터를 모두 mag_data 배열에 저장
+    	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) // 가속도센서값일때
+    		acc_data = event.values.clone();  //마찬가지
+    	if (mag_data != null && acc_data != null) { //널체크
+    		float r[] = new float[9];
+            float i[] = new float[9];
+	       boolean success = SensorManager.getRotationMatrix(r, i, acc_data, mag_data); //회전메트릭스 연산
+	       if(success){
+	    	   	float orientation[] = new float[3];
+	            SensorManager.getOrientation(r, orientation);
+//	            currentDegree = orientation[0] * 360 / (2* 3.15159f); // orientation contains: azimut, pitch and roll
+
+	            currentDegree = (float)Math.toDegrees(orientation[0]); // 방향값을 각도로 변환
+
+	            if(currentDegree < 0) currentDegree += 360; //0보다 작을경우 360을더해줌
+	       }
+    	}
     }
 
     @Override
