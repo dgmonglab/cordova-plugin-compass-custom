@@ -45,7 +45,8 @@ public class compass extends CordovaPlugin implements SensorEventListener {
     float[] result_data = new float[3];
     float[] mag_data = new float[3]; //센서데이터를 저장할 배열 생성
     float[] acc_data = new float[3]; //가속도데이터값이 들어갈 배열. 각도를 뽑으려면 가속도와 지자계의 값이 있어야함.
-
+    float[] mGravity;
+    float[] mGeomagnetic;
 
 
     @Override
@@ -59,8 +60,7 @@ public class compass extends CordovaPlugin implements SensorEventListener {
         mSensorManager.registerListener(this, msensor, SensorManager.SENSOR_DELAY_GAME);
         mSensorManager.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_GAME);
     }
-    float[] mGravity;
-    float[] mGeomagnetic
+
     @Override
     public void onSensorChanged(SensorEvent event) {
     	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER)
