@@ -19,13 +19,41 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-public class compass extends CordovaPlugin{
-//public class compass extends CordovaPlugin implements SensorEventListener {
+//public class compass extends CordovaPlugin{
+////public class compass extends CordovaPlugin implements SensorEventListener {
+//
+//	@Override
+//	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException
+//	{
+//		callbackContext.success(action);
+//		return true;
+//	}
+//}
+
+public class compass extends CordovaPlugin implements SensorEventListener {
+	// record the compass picture angle turned
+    private float currentDegree = 0f;
+    // device sensor manager
+    private SensorManager mSensorManager;
+
+    public compass(){
+    	mSensorManager = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+    	currentDegree = Math.round(event.values[0]);
+    }
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
 
 	@Override
 	public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException
 	{
-		callbackContext.success(action);
+		callbackContext.success(action+" : "+currentDegree);
 		return true;
 	}
 }
