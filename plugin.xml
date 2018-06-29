@@ -22,7 +22,7 @@
     <name>cordova-plugin-compass-custom</name>
 
     <js-module src="www/compass.js" name="compass">
-        <clobbers target="cordova.plugins.compass" />
+        <clobbers target="dgmong.compass" />
     </js-module>
 
     <!-- android -->

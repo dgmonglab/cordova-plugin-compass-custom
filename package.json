@@ -1,30 +1,10 @@
 {
   "name": "cordova-plugin-compass-custom",
   "version": "0.0.1",
-  "description": "Cordova Set Wallpaper Plugin",
   "cordova": {
     "id": "ordova-plugin-compass-custom",
     "platforms": [
       "android"
     ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fbsanches/cordova-plugin-wallpaper"
-  },
-  "keywords": [
-    "cordova",
-    "wallpaper",
-    "ecosystem:cordova",
-    "cordova-android"
-  ],
-  "author": {
-    "name": "Fernando Arce",
-    "url": "https://github.com/fbsanches"
-  },
-  "license": "Apache-2.0",
-  "contributors": [{
-    "name": "flyingPotat0e",
-    "url": "https://github.com/flyingPotat0e"
-  }]
+  }
 }
