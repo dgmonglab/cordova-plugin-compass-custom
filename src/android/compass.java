@@ -136,7 +136,7 @@ public class compass extends CordovaPlugin implements SensorEventListener {
 		PluginResult pr = new PluginResult(PluginResult.Status.OK, azimuth+"");
 
 //		callbackContext.sendPluginResult(pr);
-		callbackContext.success(pr);
+		callbackContext.success(azimuth+"");
 		return true;
 	}
 
