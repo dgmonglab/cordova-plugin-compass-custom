@@ -19,7 +19,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
-public class compass extends CordovaPlugin{
+//public class compass extends CordovaPlugin{
 public class compass extends CordovaPlugin implements SensorEventListener {
 
 //	@Override
