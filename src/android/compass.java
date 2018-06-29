@@ -41,6 +41,8 @@ public class compass extends CordovaPlugin implements SensorEventListener {
     private Sensor msensor;
     private Sensor gsensor;
 
+    float[] rotation = new float[9];
+    float[] result_data = new float[3];
     float[] mag_data = new float[3]; //센서데이터를 저장할 배열 생성
     float[] acc_data = new float[3]; //가속도데이터값이 들어갈 배열. 각도를 뽑으려면 가속도와 지자계의 값이 있어야함.
 
