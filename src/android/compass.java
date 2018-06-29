@@ -81,7 +81,6 @@ public class compass extends CordovaPlugin implements SensorEventListener {
 //    		    currentDegree = -currentDegree*360/(2*3.14159f);
 //    		   }
 //    		  }
-
     	if (event.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD)   //센서가 읽어들인 값이 마그네틱필드일때
     		mag_data = event.values.clone();    //데이터를 모두 mag_data 배열에 저장
     	if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) // 가속도센서값일때
